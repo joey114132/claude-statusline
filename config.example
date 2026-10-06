@@ -1,0 +1,15 @@
+# Copy to ~/.config/claude-statusline/config and edit.
+# Only STATUSLINE_<NAME>=<integer> lines are read; the file is never executed.
+
+# Bars change color when the remaining percentage drops below these values.
+STATUSLINE_WARN_PCT=50
+STATUSLINE_CRIT_PCT=25
+
+# Fill colors as 256-color codes (run the snippet in the README to preview them).
+STATUSLINE_OK_COLOR=28
+STATUSLINE_WARN_COLOR=166
+STATUSLINE_CRIT_COLOR=124
+STATUSLINE_EMPTY_COLOR=238
+
+# Bar width in cells (minimum 4).
+STATUSLINE_BAR_WIDTH=10
