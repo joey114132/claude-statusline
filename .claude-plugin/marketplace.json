@@ -1,0 +1,11 @@
+{
+  "name": "claude-statusline",
+  "owner": { "name": "joey114132" },
+  "plugins": [
+    {
+      "name": "claude-statusline",
+      "source": "./",
+      "description": "Compact Claude Code statusline with gauge bars and configurable color thresholds."
+    }
+  ]
+}

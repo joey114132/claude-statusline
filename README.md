@@ -16,9 +16,25 @@ On API billing, where there is no quota, the two quota gauges are replaced by th
 
 You need `bash`, `jq`, `perl` and `git`. It has been tested on Ubuntu with bash 5. macOS should work because the script falls back to BSD `date -r`, but that has not been tested.
 
-## Install
+## Install as a plugin
 
-Clone the repository and link the script into `~/.claude`, so a later `git pull` updates it in place:
+Run these inside Claude Code:
+
+```
+/plugin marketplace add joey114132/claude-statusline
+/plugin install claude-statusline@claude-statusline
+/claude-statusline:install
+```
+
+Plugins cannot set `statusLine` themselves, which is why the third command exists. It copies the script to `~/.claude/claude-statusline/statusline.sh` and sets `statusLine` in `~/.claude/settings.json` to point at that copy. Other settings stay as they are, and the old file is saved next to it as `settings.json.bak-<time>`. If a different status line was configured, the command shows what it replaced.
+
+The copy is there because the plugin's own folder moves on every update. After updating the plugin, run `/claude-statusline:install` again to pick up the new script.
+
+The repository is private, so Claude Code needs git access to it: an SSH key for an account that can see the repo, or HTTPS credentials set up with `gh auth login` and `gh auth setup-git`.
+
+## Install from a clone
+
+If you would rather track the repository directly, clone it and link the script into `~/.claude`. A later `git pull` then updates it in place:
 
 ```bash
 git clone git@github.com:joey114132/claude-statusline.git ~/claude-statusline
@@ -41,12 +57,14 @@ The new line appears after the next message.
 
 ## Configure
 
-Copy the example config and edit the numbers:
+Put the settings you want to change in `~/.config/claude-statusline/config`, one per line. Anything left out keeps its default. For example, to turn bars orange below 60% and red below 30%:
 
 ```bash
 mkdir -p ~/.config/claude-statusline
-cp ~/claude-statusline/config.example ~/.config/claude-statusline/config
+printf 'STATUSLINE_WARN_PCT=60\nSTATUSLINE_CRIT_PCT=30\n' > ~/.config/claude-statusline/config
 ```
+
+`config.example` in this repository lists every setting with its default.
 
 | Setting | Default | Meaning |
 |---|---|---|

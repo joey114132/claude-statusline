@@ -1,0 +1,7 @@
+{
+  "name": "claude-statusline",
+  "version": "1.0.0",
+  "description": "Compact Claude Code statusline: gauge bars with the percentage inside, color thresholds you can configure, wraps to the terminal width. Run /claude-statusline:install after installing.",
+  "author": { "name": "joey114132" },
+  "keywords": ["statusline", "status-line", "context", "quota"]
+}
